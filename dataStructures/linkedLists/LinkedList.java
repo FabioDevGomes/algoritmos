@@ -17,11 +17,41 @@ public class LinkedList {
         current.next = new Node(data);
     }
 
+    public int getSpecificElementFromIndex(int indexToFind){
+        int index = 0;
+        Node current = this.head;
+        while (current != null){
+            if(index == indexToFind){
+                return current.data;
+            }
+            index++;
+            current = current.next;
+        }
+        return 0;
+    }
+
+    public int getLastElement(){
+        Node showing = this.head;
+        while (showing != null){
+            if(showing.next == null){
+                return showing.data;
+            }
+            showing = showing.next;
+        }
+        return 0;
+    }
+
+    public void printAllElements(){
+        Node currentShowing = this.head;
+        while (currentShowing != null){
+            System.out.println(currentShowing.data);
+            currentShowing = currentShowing.next;
+        }
+    }
+
 
     public static void main(String[] args) {
-
         LinkedList fabioLinkedList = new LinkedList();
-        //System.out.println(fList.head);
 
         fabioLinkedList.append(2);
         fabioLinkedList.append(1);
@@ -30,34 +60,11 @@ public class LinkedList {
         fabioLinkedList.append(22);
         fabioLinkedList.append(8);
 
+        fabioLinkedList.printAllElements();
 
-        //show all elements
-        Node currentShowing = fabioLinkedList.head;
-        while (currentShowing != null){
-            System.out.println(currentShowing.data);
-            currentShowing = currentShowing.next;
-        }
+        fabioLinkedList.getLastElement();
 
-        //show last element
-        Node showing = fabioLinkedList.head;
-        while (showing != null){
-            if(showing.next == null){
-                System.out.println("last: " + showing.data);
-            }
-            showing = showing.next;
-        }
-
-        //show specific element
-        int index = 0;
-        int indexToFind = 3;
-        Node current = fabioLinkedList.head;
-        while (current != null){
-            if(index == indexToFind){
-                System.out.println("index " + indexToFind + ": " + current.data);
-            }
-            index++;
-            current = current.next;
-        }
+        fabioLinkedList.getSpecificElementFromIndex(2);
 
     }
 
